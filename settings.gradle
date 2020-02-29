@@ -1,0 +1,16 @@
+rootProject.name = 'hariko-frame'
+include 'buildSrc'
+include 'hariko-core'
+include 'hariko-web'
+include 'hariko-dcs'
+include 'hariko-log'
+include 'hariko-db'
+include 'hariko-boot'
+include 'hariko-clould'
+
+rootProject.getChildren().find{ it.name == "buildSrc" }.name = "hariko-build-src"
+rootProject.name = "hariko-frame"
+rootProject.children.each {project ->
+    project.buildFileName = "${project.name}.gradle"
+}
+

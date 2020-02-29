@@ -1,0 +1,15 @@
+dependencies {
+    compile project(':hariko-core')
+
+    compile("org.aspectj:aspectjweaver:${aspectjVersion}")
+    compile("org.springframework:spring-aop:${springVersion}")
+
+    compile("org.springframework:spring-web:${springVersion}")
+    compile("org.springframework:spring-webmvc:${springVersion}")
+
+    compile('com.alibaba:fastjson:1.2.62')
+    compile("javax.servlet:javax.servlet-api:3.1.0")
+    compile("javax.servlet.jsp:javax.servlet.jsp-api:2.3.2-b02")
+}
+
+

@@ -1,0 +1,8 @@
+dependencies {
+    compile project(":hariko-core")
+
+    compile("org.springframework.data:spring-data-redis:${springBootVersion}"){
+        exclude module: "slf4j-api"
+    }
+    compile("io.lettuce:lettuce-core:${springVersion}")
+}

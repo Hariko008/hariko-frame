@@ -1,0 +1,6 @@
+dependencies {
+    compile project(':hariko-core')
+
+    compile("org.springframework:spring-oxm:${springVersion}")
+    compile("org.springframework:spring-tx:${springVersion}")
+}

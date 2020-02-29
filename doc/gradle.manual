@@ -1,0 +1,6 @@
+api或compile的作用是一样的,以后的高版本会把compile去掉
+api或compile关键字引用的包对于其他module来说是可见的,而implementation关键字引用的包对于其他module来说是不可见的。
+provide只是参与编译,打包时不打进包内,例如:生成代码的工具jar。父工程已经引进相关jar,子工程可以用这种点位编译。
+
+transitive=false是传递依赖的控制,默认false,不传递依赖。
+chaning=true每次都从服务器拉取。

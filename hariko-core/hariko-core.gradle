@@ -1,0 +1,9 @@
+dependencies {
+    compile project(":hariko-log")
+
+    compile("org.springframework:spring-beans:${springVersion}")
+    compile("org.springframework:spring-context:${springVersion}")
+    compile("org.springframework:spring-context-support:${springVersion}")
+    compile("org.springframework:spring-expression:${springVersion}")
+
+}

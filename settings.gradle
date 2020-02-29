@@ -6,7 +6,7 @@ include 'hariko-dcs'
 include 'hariko-log'
 include 'hariko-db'
 include 'hariko-boot'
-include 'hariko-clould'
+include 'hariko-cloud'
 
 rootProject.getChildren().find{ it.name == "buildSrc" }.name = "hariko-build-src"
 rootProject.name = "hariko-frame"

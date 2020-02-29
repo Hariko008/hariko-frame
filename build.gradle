@@ -25,9 +25,10 @@ ext {
     // 系统中用的springcloud的版本
     springCloudVersion  = "Hoxton.RELEASE"
     aspectjVersion      = "1.9.4"
-    slf4jVersion        = "1.7.9"//"2.0.0-alpha1"
-    log4jVersion        = "2.12.1"
-    logbackVersion      = "1.2.1"//"1.3.0-alpha5"
+    slf4jVersion        = "1.7.29"//"2.0.0-alpha1"
+    log4j2Version       = "2.12.1"
+    logbackVersion      = "1.2.3"//"1.3.0-alpha5"
+    guavaVersion        = "28.1-jre"
     junitVersion        = "4.12"
 
 }

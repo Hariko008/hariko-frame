@@ -1,12 +1,30 @@
 dependencies {
     compile("org.slf4j:slf4j-api:${slf4jVersion}")
-    compile("org.slf4j:jcl-over-slf4j:${slf4jVersion}")
-    compile("org.slf4j:log4j-over-slf4j:${slf4jVersion}")
-    compile("org.slf4j:jul-to-slf4j:${slf4jVersion}")
 
+    //log4j2 基本相关
+    compile("org.apache.logging.log4j:log4j-api:${log4j2Version}")
+    compile("org.apache.logging.log4j:log4j-core:${log4j2Version}")
+
+    compile("org.slf4j:jcl-over-slf4j:${slf4jVersion}")
+    //这个是把log4j的旧版本, 也就是log4j1
+    compile("org.slf4j:log4j-over-slf4j:${slf4jVersion}")
+    //这个是log4j2的版本,和sfl4j一起使用做为主流, 把log4j2适配成 slf4j, 用log4j2的实现
+    //compile("org.apache.logging.log4j:log4j-slf4j-impl:${log4j2Version}")
+
+    //下面的是spring-boot-starter-logging中默认提供的
+    //jul 桥接成 slf4j 用slf4j 可以实现日志框架切换
+    compile("org.slf4j:jul-to-slf4j:${slf4jVersion}")
+    //log4j2 桥接成 slf4j 用slf4j 可以实现日志框架切换
+    compile("org.apache.logging.log4j:log4j-to-slf4j:${log4j2Version}")
+
+    // logback 的依赖
     compile("ch.qos.logback:logback-classic:${logbackVersion}"){
         exclude module: "slf4j-api"
     }
+
+    //log4j2注意事项:
+    //1.log4j-to-slf4j和log4j-sfl4j-impl不能同时存在
+    //2.log4j2的实现是log4j-sfl4j-impl-2.*和log4j-core没有关系,不会造成依赖树中有多种日志框架
 }
 
 

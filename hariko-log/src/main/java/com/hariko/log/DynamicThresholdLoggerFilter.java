@@ -1,4 +1,4 @@
-package com.hariko.frame.log;
+package com.hariko.log;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;

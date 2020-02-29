@@ -1,7 +1,9 @@
 dependencies {
     compile project(':hariko-web')
 
-    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}"){
+        exclude module: "spring-boot-starter-logging"
+    }
 
     /**
      * 以下代码注释,是因为这些代码把spingboot相关依赖拆分成一块块,可以参照

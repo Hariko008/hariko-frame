@@ -25,5 +25,4 @@ repositories {
 
 dependencies {
     compile("com.hariko.frame:hariko-boot:1.0.0-SNAPSHOT")
-    implementation 'com.google.guava:guava:28.1-jre'
 }

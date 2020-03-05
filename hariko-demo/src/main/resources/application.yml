@@ -1,2 +1,12 @@
 server:
   port: 8123
+spring:
+  redis:
+    cluster:
+      nodes: 127.0.0.1:7021,127.0.0.1:7022,127.0.0.1:7023,127.0.0.1:7024,127.0.0.1:7025,127.0.0.1:7026
+      max-redirects: 10
+      password: hariko
+  cloud:
+    cluster:
+      lock:
+        enabled: false

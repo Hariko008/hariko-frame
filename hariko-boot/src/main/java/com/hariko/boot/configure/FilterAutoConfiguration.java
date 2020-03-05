@@ -19,7 +19,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 @ConditionalOnClass({ HttpHeaderFilter.class, MdcFilter.class })
 @EnableConfigurationProperties({HttpProperties.class})
 @SuppressWarnings({"unchecked"})
-public class FilterAutoConfigure {
+public class FilterAutoConfiguration {
 
 	@Autowired
 	private HttpProperties httpProperties;

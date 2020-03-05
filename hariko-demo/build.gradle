@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.2.1.RELEASE'
+        springBootVersion = '2.2.5.RELEASE'
     }
     repositories {
         mavenLocal()
@@ -23,6 +23,46 @@ repositories {
     maven { url "https://repo.spring.io/plugins-release" }
 }
 
+ext{
+    springBootVersion = "2.2.5.RELEASE"
+    springIntegrationVersion = "4.2.4.RELEASE"
+
+}
+
 dependencies {
-    compile("com.hariko.frame:hariko-boot:1.0.0-SNAPSHOT")
+    compile("com.hariko.frame:hariko-cloud:1.0.0-SNAPSHOT")
+
+    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}"){
+        exclude module: "spring-boot-starter-logging"
+        exclude module: "slf4j-api"
+    }
+
+    //implementation("org.springframework.boot:spring-boot-starter-integration:${springBootVersion}")
+
+    //compile("com.hariko.frame:hariko-cloud:1.0.0-SNAPSHOT")
+
+    //compile("org.springframework.boot:spring-boot-starter-data-redis:${springBootVersion}")
+
+    //compile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+
+    //compile("org.springframework.cloud:spring-cloud-cluster-redis:1.0.2.RELEASE")
+
+    /*compile group: 'org.springframework.cloud', name: 'spring-cloud-cluster-redis', version: '1.0.2.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-commons', version: '2.2.1.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: '2.2.1.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-context', version: '2.2.1.RELEASE'
+*/
+    // 依赖于 spring-cloud-cluster-redis 1.0.1.RELEASE
+    /*compile("org.springframework.integration:spring-integration-core:${springIntegrationVersion}")
+    compile("org.springframework.cloud:spring-cloud-commons:2.2.1.RELEASE"){
+        exclude module: "slf4j-api"
+    }
+    compile("org.springframework.cloud:spring-cloud-starter-config:2.2.1.RELEASE"){
+        exclude module: "spring-cloud-config-client"
+        exclude module: "slf4j-api"
+    }
+    compile("org.springframework.cloud:spring-cloud-context:2.2.1.RELEASE"){
+        exclude module: "slf4j-api"
+    }*/
+    //compile("org.springframework.cloud:spring-cloud-starter-config:2.2.1.RELEASE")
 }

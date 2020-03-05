@@ -6,5 +6,9 @@ dependencies {
     compile("org.springframework:spring-context-support:${springVersion}")
     compile("org.springframework:spring-expression:${springVersion}")
 
+    compile("org.springframework:spring-jcl:${springVersion}")
+
+    testCompile("org.springframework:spring-test:${springVersion}")
+
     compile("com.google.guava:guava:${guavaVersion}")
 }

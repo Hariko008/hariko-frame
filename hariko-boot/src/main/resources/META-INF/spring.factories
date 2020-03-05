@@ -1,3 +1,4 @@
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.hariko.boot.configure.FilterAutoConfigure
+com.hariko.boot.configure.FilterAutoConfiguration,\
+com.hariko.boot.configure.RedisConfiguration

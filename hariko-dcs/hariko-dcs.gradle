@@ -4,5 +4,7 @@ dependencies {
     compile("org.springframework.data:spring-data-redis:${springBootVersion}"){
         exclude module: "slf4j-api"
     }
-    compile("io.lettuce:lettuce-core:${springVersion}")
+
+    compile("io.lettuce:lettuce-core:${lettuceVersion}")
+    compile("redis.clients:jedis:${jedisVersion}")
 }

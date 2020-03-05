@@ -1,3 +1,24 @@
 dependencies {
     compile project(':hariko-boot')
+
+    compile("org.springframework.cloud:spring-cloud-cluster-redis:1.0.2.RELEASE"){
+        exclude module: "spring-tx"
+        exclude module: "spring-boot-starter"
+        exclude module: "spring-data-redis"
+        exclude module: "spring-boot-starter-redis"
+    }
+
+    compile("org.springframework.boot:spring-boot-starter-integration:${springBootVersion}"){
+        exclude module: "spring-boot-starter-aop"
+    }
+
+    compile("org.springframework:spring-tx:${springVersion}")
+    compile("org.springframework:spring-web:${springVersion}")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-cluster-dependencies:${springCloudClusterVersion}"
+    }
 }

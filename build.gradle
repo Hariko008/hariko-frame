@@ -19,18 +19,23 @@ ext {
 
     // spring、springboot、springcloud版本对应关系参照 https://spring.io/projects/spring-cloud
     // 系统中用的springboot的版本
-    springBootVersion   = "2.2.1.RELEASE"
+    springBootVersion   = "2.2.5.RELEASE"
     // 系统中用的spring的版本
-    springVersion       = "5.2.1.RELEASE"
+    springVersion       = "5.2.4.RELEASE"
     // 系统中用的springcloud的版本
-    springCloudVersion  = "Hoxton.RELEASE"
-    aspectjVersion      = "1.9.4"
+    springCloudVersion  = "Hoxton.SR1"
+    springCloudClusterVersion = "1.0.2.RELEASE"
+    springIntegrationVersion = "4.2.4.RELEASE"
+
+    aspectjVersion      = "1.9.5"
     slf4jVersion        = "1.7.29"//"2.0.0-alpha1"
     log4j2Version       = "2.12.1"
     logbackVersion      = "1.2.3"//"1.3.0-alpha5"
     guavaVersion        = "28.1-jre"
     junitVersion        = "4.12"
 
+    lettuceVersion      = "5.2.2.RELEASE"
+    jedisVersion        = "3.2.0"
 }
 
 configure(subprojects) { project ->
@@ -59,15 +64,14 @@ configure(subprojects) { project ->
     }
 
     dependencies {
-        testCompile("junit:junit:${junitVersion}") {
-            exclude group: "org.hamcrest", module: "hamcrest-core"
+        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+
+        testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}"){
+            exclude module: "spring-boot-starter-logging"
+            exclude module: "slf4j-api"
         }
-        testCompile("org.mockito:mockito-core:2.28.2") {
-            exclude group: "org.hamcrest", module: "hamcrest-core"
-        }
-        testCompile("org.hamcrest:hamcrest-all:1.3")
+
         compileOnly("com.google.code.findbugs:jsr305:3.0.2")
-        testCompileOnly("com.google.code.findbugs:jsr305:3.0.2")
     }
 }
 

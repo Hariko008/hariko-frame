@@ -1,8 +1,18 @@
 dependencies {
     compile project(':hariko-web')
+    compile project(':hariko-dcs')
 
     compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}"){
         exclude module: "spring-boot-starter-logging"
+    }
+
+    compile("org.springframework.boot:spring-boot-starter-aop:${springBootVersion}"){
+        exclude module: "spring-boot-starter"
+        exclude module: "aspectjweaver"
+    }
+
+    compile("org.springframework.data:spring-data-redis:${springBootVersion}"){
+        exclude module: "slf4j-api"
     }
 
     /**

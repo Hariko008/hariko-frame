@@ -1,5 +1,6 @@
 package com.hariko.boot.configure.redis;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -10,13 +11,10 @@ import java.util.List;
 @ConfigurationProperties(prefix = "spring.redis.cluster")
 public class RedisClusterProperties {
 
-    /*
-     * spring.redis.cluster.nodes[0] = 127.0.0.1:7379
-     * spring.redis.cluster.nodes[1] = 127.0.0.1:7380
-     * ...
-     */
+    //@Value("${cluster.nodes}")
     List<String> nodes;
 
+    //@Value("${cluster.password")
     String password;
 
     public List<String> getNodes() {
@@ -34,4 +32,5 @@ public class RedisClusterProperties {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

@@ -5,6 +5,9 @@ dependencies {
         exclude module: "slf4j-api"
     }
 
-    compile("io.lettuce:lettuce-core:${lettuceVersion}")
+    compile("io.lettuce:lettuce-core:${lettuceVersion}"){
+        exclude group: "io.netty"
+        exclude module: "reactor-core"
+    }
     compile("redis.clients:jedis:${jedisVersion}")
 }

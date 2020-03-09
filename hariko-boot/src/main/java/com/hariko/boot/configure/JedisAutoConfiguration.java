@@ -8,13 +8,13 @@ import com.hariko.boot.configure.redis.RedisClusterProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -23,7 +23,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 @ConditionalOnClass(RedisClusterProperties.class)
 @EnableConfigurationProperties(RedisClusterProperties.class)
-public class RedisConfiguration {
+@ConditionalOnProperty(prefix = "spring.redis.cluster", name = "jedis", havingValue = "enable")
+public class JedisAutoConfiguration {
 
     @Autowired
     RedisClusterProperties redisClusterProperties;
@@ -78,7 +79,7 @@ public class RedisConfiguration {
          */
         //objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         //因为上面那句代码已经被标记成作废，因此用下面这个方法代替，仅仅测试了一下，不知道是否完全正确
-        objectMapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance,ObjectMapper.DefaultTyping.NON_FINAL);
+        objectMapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL);
         jackson2JsonRedisSerializer.setObjectMapper(objectMapper);
         return jackson2JsonRedisSerializer;
     }
@@ -91,15 +92,5 @@ public class RedisConfiguration {
         return redisTemplate;
     }
 
-    @Bean("stringRedisClusterTemplateByLettuce")
-    @ConditionalOnMissingBean(name = "stringRedisClusterTemplateByLettuce")
-    public StringRedisTemplate stringRedisClusterTemplateByLettuce(){
-        RedisClusterConfiguration redisClusterConfiguration = new RedisClusterConfiguration(redisClusterProperties.getNodes());
-        redisClusterConfiguration.setPassword(redisClusterProperties.getPassword());
-        LettuceConnectionFactory lettuceConnectionFactory = new LettuceConnectionFactory(redisClusterConfiguration);
 
-        StringRedisTemplate redisTemplate = new StringRedisTemplate();
-        redisTemplate.setConnectionFactory(lettuceConnectionFactory);
-        return redisTemplate;
-    }
 }

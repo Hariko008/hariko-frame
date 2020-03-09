@@ -6,6 +6,15 @@ spring:
       nodes: 127.0.0.1:7021,127.0.0.1:7022,127.0.0.1:7023,127.0.0.1:7024,127.0.0.1:7025,127.0.0.1:7026
       max-redirects: 10
       password: hariko
+      lettuce: disable
+      jedis: enable
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: 1ms
+        max-idle: 8
+        min-idle: 0
+      shutdown-timeout: 100ms
   cloud:
     cluster:
       lock:

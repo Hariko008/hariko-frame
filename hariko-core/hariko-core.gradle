@@ -11,4 +11,6 @@ dependencies {
     testCompile("org.springframework:spring-test:${springVersion}")
 
     compile("com.google.guava:guava:${guavaVersion}")
+
+    compile("io.netty:netty-all:${nettyVersion}")
 }
